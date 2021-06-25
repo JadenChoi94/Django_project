@@ -12,19 +12,20 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os, environ
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 from django.urls import reverse_lazy
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 env = environ.Env(
     # set casting, default value
     DEBUG=(bool, False)
 )
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+
+
 # reading .env file
 environ.Env.read_env(
     env_file=os.path.join(BASE_DIR, '.env')
@@ -53,8 +54,9 @@ INSTALLED_APPS = [
     'accountapp',
     'bootstrap4',
     'profileapp',
+    'articleapp',
+    'commentapp',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -136,8 +138,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_FIRS = [
-    BASE_DIR / 'STATIC',
+STATICFILES_DIRS = [
+    BASE_DIR / "static",
 ]
 
 LOGIN_REDIRECT_URL = reverse_lazy('accountapp:hello_world')

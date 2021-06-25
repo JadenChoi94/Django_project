@@ -12,6 +12,7 @@ from accountapp.models import HelloWorld
 
 has_ownership = [account_ownership_required, login_required]
 
+
 @login_required
 def hello_world(request):
         if request.method == "POST":
@@ -20,11 +21,11 @@ def hello_world(request):
             new_hello_world = HelloWorld()
             new_hello_world.text = temp
             new_hello_world.save()
-
             return HttpResponseRedirect(reverse('accountapp:hello_world'))
         else:
             hello_world_list = HelloWorld.objects.all()
             return render(request, 'accountapp/hello_world.html', context={'hello_world_list': hello_world_list})
+
 
 class AccountCreateView(CreateView):
     model = User
@@ -32,10 +33,12 @@ class AccountCreateView(CreateView):
     success_url = reverse_lazy('accountapp:hello_world')
     template_name = 'accountapp/create.html'
 
+
 class AccountDetailView(DetailView):
     model = User
     context_object_name = 'target_user'
     template_name = 'accountapp/detail.html'
+
 
 @method_decorator(has_ownership, 'get')
 @method_decorator(has_ownership, 'post')
@@ -51,6 +54,7 @@ class AccountUpdateView(UpdateView):
 @method_decorator(has_ownership, 'post')
 class AccountDeleteView(DeleteView):
     model = User
+    context_object_name = 'target_user'
     success_url = reverse_lazy('accountapp:login')
     template_name = 'accountapp/delete.html'
 
