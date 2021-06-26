@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     'profileapp',
     'articleapp',
     'commentapp',
+    'projectapp',
+    'subscribeapp',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
