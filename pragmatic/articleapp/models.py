@@ -1,3 +1,6 @@
+import os
+
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -12,4 +15,5 @@ class Article(models.Model):
     image = models.ImageField(upload_to='article/', null=False)
     content = models.TextField(null=True)
     created_at = models.DateField(auto_now_add=True, null=True)
+
 
