@@ -1,6 +1,6 @@
 # This is my first django project
 
-`Pinterest 클론코딩`
+`Pinterest 클론코딩` 
 
 [사용한 스택]
 - Django
@@ -8,3 +8,6 @@
 - AWS ec2, Route53
 - Nginx
 - MariaDB
+
+
+> 최종 코드는 private...
